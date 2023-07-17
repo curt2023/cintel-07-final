@@ -23,7 +23,7 @@ def get_mtcars_inputs():
         ui.input_numeric(
         "MTCARS_HP_MAX",
         "Cars HP (fps):",
-        value=90.0
+        value=100.0
         ),
         ui.tags.hr(),
         ui.tags.section(
