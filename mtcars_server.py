@@ -60,6 +60,7 @@ def get_mtcars_server_functions(input, output, session):
 
         # Set the reactive value
         reactive_df.set(filtered_df)
+        reactive_df.set(df)
 
     @output
     @render.text
