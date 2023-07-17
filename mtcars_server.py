@@ -34,7 +34,7 @@ def get_mtcars_server_functions(input, output, session):
     @reactive.Effect
     @reactive.event(
         input.MTCARS_MPG_RANGE,
-        input.MTCARS_MAX_HP,
+        input.MTCARS_HP_MAX,
         )
     def _():
         df = original_df.copy()
@@ -53,7 +53,7 @@ def get_mtcars_server_functions(input, output, session):
 
         filtered_df = df[(df["mpg"] >= input_min) & (df["mpg"] <= input_max)]
 
-        cars_hp_filter = df["hp"] <= input.MTCARS_MAX_HP()
+        cars_hp_filter = df["hp"] <= input.MTCARS_HP_MAX()
         df = df[cars_hp_filter]
 
         # Set the reactive value
