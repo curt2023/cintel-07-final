@@ -22,9 +22,12 @@ def get_mtcars_inputs():
         ),
         ui.input_numeric(
         "MTCARS_HP_MAX",
-        "Cars HP (fps):",
-        value=100.0
+        "Cars HP (hp):",
+        value=300.0
         ),
+        ui.input_checkbox("TRANSMISSION_TYPE_AUTO", "Automatic", value=True),
+        ui.input_checkbox("TRANSMISSION_TYPE_MANUAL", "Manual", value=True),
+
         ui.tags.hr(),
         ui.tags.section(
             ui.h3("MT Cars Table"),
