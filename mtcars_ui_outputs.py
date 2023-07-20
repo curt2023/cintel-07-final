@@ -10,7 +10,7 @@ from shinywidgets import output_widget
 
 def get_mtcars_outputs():
     return ui.panel_main(
-        ui.h2("Main Panel with Reactive Output"),
+        ui.h2("Data Panel"),
         ui.tags.hr(),
         ui.tags.section(
             ui.h3("Filtered Cars: Charts"),
