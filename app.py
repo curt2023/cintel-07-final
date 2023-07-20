@@ -45,7 +45,7 @@ app_ui = ui.page_navbar(
                 ui.input_text(
                     "car_input",
                     "Enter your favorite car(s)",
-                    placeholder="Favorite Cars"
+                    placeholder="Favorite cars"
                 ),
                 ui.input_text(
                     "color_input",
@@ -124,7 +124,7 @@ def server(input, output, session):
     @render.text
     def welcome_output():
         user = input.name_input()
-        welcome_string = f"{user} Start your ENGINES!"
+        welcome_string = f"{user} START YOUR ENGINES!"
         return welcome_string
 
     @output
