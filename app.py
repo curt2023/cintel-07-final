@@ -11,6 +11,7 @@ Each Shiny app has two parts:
 """
 from shiny import App, ui
 import shinyswatch
+from shiny import App, ui, render
 
 from flights_server import get_flights_server_functions
 from flights_ui_inputs import get_flights_inputs
@@ -34,6 +35,52 @@ logger, logname = setup_logger(__name__)
 
 app_ui = ui.page_navbar(
     shinyswatch.theme.solar(),
+    ui.nav(
+        "Home",
+        ui.layout_sidebar(
+            ui.panel_sidebar(
+                ui.h2("User Information"),
+                ui.tags.hr(),
+                ui.input_text("name_input", "Enter your name", placeholder="Your Name"),
+                ui.input_text(
+                    "car_input",
+                    "Enter your favorite cars",
+                    placeholder="Favorite Cars"
+                ),
+                ui.input_text(
+                    "color_input",
+                    "Enter your favorite color",
+                    placeholder="Favorite color"
+                ),
+                ui.tags.hr(),
+            ),
+            ui.panel_main(
+                ui.h2("New Data Exploration Tabs (see above)"),
+                ui.tags.hr(),
+                ui.tags.ul(
+                    ui.tags.li(
+                        "To explore MotorTrend Car dataset, click the 'Flights' tab."
+                    ),
+                    ui.tags.li(
+                        "To explore MotorTrend Car dataset, click the 'MT_Cars' tab."
+                    ),
+                    ui.tags.li(
+                        "To explore the Penguins Dataset, click the 'Penguins' tab."
+                    ),
+                    ui.tags.li(
+                        "To explore MotorTrend Car dataset, click the 'Relationships' tab."
+                    ),
+                ),
+                ui.tags.hr(),
+                ui.h2("User Preferences"),
+                ui.tags.hr(),
+                ui.output_text_verbatim("welcome_output"),
+                ui.output_text_verbatim("cars_output"),
+                ui.output_text_verbatim("color_output"),
+                ui.tags.hr(),
+            ),
+        ),
+    ),
     ui.nav(
         "Flights",
         ui.layout_sidebar(
@@ -73,7 +120,29 @@ app_ui = ui.page_navbar(
 
 def server(input, output, session):
     """Define functions to create UI outputs."""
+    @output
+    @render.text
+    def welcome_output():
+        user = input.name_input()
+        welcome_string = f"{user} Start you ENGINES!"
+        return welcome_string
 
+    @output
+    @render.text
+    def cars_output():
+        answer = input.car_input()
+        count = len(answer)
+        language_string = f"Your favorite cars are {answer}. That takes {count} characters"
+        return language_string
+    
+    @output
+    @render.text
+    def color_output():
+        answer = input.color_input()
+        count = len(answer)
+        language_string = f"Your favorite colors are {answer}. That takes {count} characters"
+        return language_string
+    
     logger.info("Starting server...")
     get_flights_server_functions(input, output, session)
     get_mtcars_server_functions(input, output, session)
