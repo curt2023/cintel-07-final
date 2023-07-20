@@ -2,7 +2,7 @@
 
 - Interactive app: [cintel-04-reactive](https://curt2023.shinyapps.io/cintel-04-reactive/)
 - Repository: [cintel-04-reactive](https://github.com/curt2023/cintel-04-reactive)
-- Author: [Curtis Rogers]://github.com/denisecase)
+- Author: [Curtis Rogers](https://github.com/curt2023)
 
 -----
 
