@@ -65,7 +65,6 @@ def get_mtcars_server_functions(input, output, session):
             show_transmission_list.append(0)
         if input.TRANSMISSION_TYPE_MANUAL():
             show_transmission_list.append(1)
-        show_transmission_list = show_transmission_list or [0, 1]
         transmission_filter = df["am"].isin(show_transmission_list)
         df = df[transmission_filter]
 
