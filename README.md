@@ -1,7 +1,7 @@
 # Continuous Intelligence and Interactive Analytics - Reactive Apps
 
-- Interactive app: [cintel-04-reactive](https://curt2023.shinyapps.io/cintel-04-reactive/)
-- Repository: [cintel-04-reactive](https://github.com/curt2023/cintel-04-reactive)
+- Interactive app: [cintel-07-final](https://curt2023.shinyapps.io/cintel-07-final/)
+- Repository: [cintel-07-final](https://github.com/curt2023/cintel-07-final)
 - Author: [Curtis Rogers](https://github.com/curt2023)
 
 -----
