@@ -29,6 +29,9 @@ from relationships_server import get_relationships_server_functions
 from relationships_ui_inputs import get_relationships_inputs
 from relationships_ui_outputs import get_relationships_outputs
 
+from flights_server import get_orders_server_functions
+from flights_ui_inputs import get_orders_inputs
+from flights_ui_outputs import get_orders_outputs
 from util_logger import setup_logger
 
 logger, logname = setup_logger(__name__)

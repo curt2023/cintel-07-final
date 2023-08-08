@@ -14,6 +14,21 @@ Function ref at: https://shiny.rstudio.com/py/api/ui.update_date_range.html
 from datetime import date
 from shiny import ui
 
+def get_orders_inputs():
+    return ui.panel_sidebar(
+        ui.h2("Order Interaction"),
+        ui.tags.hr(),
+        ui.input_date_range(
+            "ORDERS_DATE_RANGE",
+            "Enter Date Range",
+            start=date(2015, 1, 1),
+            end=date(2023, 12, 31),
+        ),
+        ui.tags.hr(),
+        ui.p("🕒 Please be patient. Outputs may take a few seconds to load."),
+        ui.tags.hr(),
+    )
+
 
 def get_flights_inputs():
     return ui.panel_sidebar(
