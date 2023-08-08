@@ -25,7 +25,6 @@ import pathlib
 import pandas as pd
 import seaborn as sns
 
-from bokeh.sampledata.les_mis import data as les_mis_data
 
 from util_logger import setup_logger
 
@@ -45,9 +44,14 @@ flights_df.to_csv(data_folder.joinpath("flights.csv"))
 mtcars_df = pd.read_csv(data_folder.joinpath("mtcars.csv"))
 mtcars_df.to_excel(data_folder.joinpath("mtcars.xlsx"))
 
-les_mis = pd.DataFrame(les_mis_data["links"])
-les_mis.to_excel("les_mis.xlsx")
-les_mis.to_csv("les_mis.csv")
+records_df = pd.read_excel(r"C:\Users\ctrog\Desktop\Records.xlsx")
+records_df.to_excel(data_folder.joinpath("records.xlsx"))
+
+orders_df = pd.read_excel(r"C:\Users\ctrog\Desktop\Orders.xlsx")
+orders_df.to_excel(data_folder.joinpath("orders.xlsx"))
+
+quantity_df = pd.read_excel(r"C:\Users\ctrog\Desktop\Quantity.xlsx")
+quantity_df.to_excel(data_folder.joinpath("quantity.xlsx"))
 
 # url="https://webpath/to/your/data.csv"
 # df=pd.read_csv(url)
