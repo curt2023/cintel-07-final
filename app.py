@@ -13,9 +13,9 @@ from shiny import App, ui
 import shinyswatch
 from shiny import App, ui, render
 
-from flights_server import get_flights_server_functions
-from flights_ui_inputs import get_flights_inputs
-from flights_ui_outputs import get_flights_outputs
+#from flights_server import get_flights_server_functions
+#from flights_ui_inputs import get_flights_inputs
+#from flights_ui_outputs import get_flights_outputs
 
 from mtcars_server import get_mtcars_server_functions
 from mtcars_ui_inputs import get_mtcars_inputs
@@ -85,10 +85,10 @@ app_ui = ui.page_navbar(
         ),
     ),
     ui.nav(
-        "Flights",
+        "Orders",
         ui.layout_sidebar(
-            get_flights_inputs(),
-            get_flights_outputs(),
+            get_orders_inputs(),
+            get_orders_outputs(),
         ),
     ),
     ui.nav(
@@ -147,7 +147,8 @@ def server(input, output, session):
         return language_string
     
     logger.info("Starting server...")
-    get_flights_server_functions(input, output, session)
+    #get_flights_server_functions(input, output, session)
+    get_orders_server_functions(input, output, session)
     get_mtcars_server_functions(input, output, session)
     get_penguins_server_functions(input, output, session)
     get_relationships_server_functions(input, output, session)
