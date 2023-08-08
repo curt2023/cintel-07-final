@@ -22,14 +22,6 @@ def get_flights_outputs():
             ui.output_text("flights_record_count_string"),
             ui.output_table("flights_filtered_table"),
             ui.tags.hr(),
-        ),
-    )
-
-def get_orders_outputs():
-    return ui.panel_main(
-        ui.h2("Main Panel with Reactive Output"),
-        ui.tags.hr(),
-        ui.tags.section(
             ui.h3("Filtered orders: Charts"),
             output_widget("orders_output_widget1"),
             output_widget("orders_output_widget2"),

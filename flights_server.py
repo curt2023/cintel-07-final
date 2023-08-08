@@ -14,9 +14,10 @@ This example uses dates - arguably the most complex UI input type.
 
 """
 import pathlib
-from shiny import render, reactive, ui, App
+from shiny import render, reactive
 import pandas as pd
-from shinywidget import render_widget
+from shiny import ui
+from shinywidgets import render_widget
 import plotly.express as px
 
 from util_logger import setup_logger
