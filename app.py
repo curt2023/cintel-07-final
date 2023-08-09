@@ -13,17 +13,17 @@ from shiny import App, ui
 import shinyswatch
 from shiny import App, ui, render
 
-from records_server import get_records_server_functions
-from records_ui_inputs import get_records_inputs
-from records_ui_outputs import get_records_outputs
+#from records_server import get_records_server_functions
+#from records_ui_inputs import get_records_inputs
+#from records_ui_outputs import get_records_outputs
 
 from penguins_server import get_penguins_server_functions
 from penguins_ui_inputs import get_penguins_inputs
 from penguins_ui_outputs import get_penguins_outputs
 
-from relationships_server import get_relationships_server_functions
-from relationships_ui_inputs import get_relationships_inputs
-from relationships_ui_outputs import get_relationships_outputs
+#from relationships_server import get_relationships_server_functions
+#from relationships_ui_inputs import get_relationships_inputs
+#from relationships_ui_outputs import get_relationships_outputs
 
 from orders_server import get_orders_server_functions
 from orders_ui_inputs import get_orders_inputs
@@ -33,7 +33,7 @@ from util_logger import setup_logger
 logger, logname = setup_logger(__name__)
 
 app_ui = ui.page_navbar(
-    shinyswatch.theme.superhero(),
+    shinyswatch.theme.spacelab(),
     ui.nav(
         "Home",
         ui.layout_sidebar(
@@ -49,24 +49,21 @@ app_ui = ui.page_navbar(
                 ui.tags.hr(),
             ),
             ui.panel_main(
-                ui.h2("New Data Exploration Tabs (see above)"),
+                ui.h2("Daily Production Reminders"),
                 ui.tags.hr(),
                 ui.tags.ul(
                     ui.tags.li(
-                        "To explore MotorTrend Car dataset, click the 'Flights' tab."
+                        "Review all errors and corrections needed during shift change."
                     ),
                     ui.tags.li(
-                        "To explore MotorTrend Car dataset, click the 'MT_Cars' tab."
+                        "Review and sign all completed records before leaving for the day."
                     ),
                     ui.tags.li(
-                        "To explore the Penguins Dataset, click the 'Penguins' tab."
-                    ),
-                    ui.tags.li(
-                        "To explore MotorTrend Car dataset, click the 'Relationships' tab."
+                        "Sumbit and saftey suggestions."
                     ),
                 ),
                 ui.tags.hr(),
-                ui.h2("User Preferences"),
+                ui.h2("Operator Information"),
                 ui.tags.hr(),
                 ui.output_text_verbatim("welcome_output"),
                 ui.output_text_verbatim("cars_output"),
@@ -82,13 +79,13 @@ app_ui = ui.page_navbar(
             get_orders_outputs(),
         ),
     ),
-    ui.nav(
-        "Records",
-        ui.layout_sidebar(
-            get_records_inputs(),
-            get_records_outputs(),
-        ),
-    ),
+    #ui.nav(
+        #"Records",
+        #ui.layout_sidebar(
+            #get_records_inputs(),
+            #get_records_outputs(),
+        #),
+    #),
     ui.nav(
         "Penguins",
         ui.layout_sidebar(
@@ -96,19 +93,19 @@ app_ui = ui.page_navbar(
             get_penguins_outputs(),
         ),
     ),
-    ui.nav(
-        "Relationships",
-        ui.layout_sidebar(
-            get_relationships_inputs(),
-            get_relationships_outputs(),
-        ),
-    ),
+    #ui.nav(
+        #"Relationships",
+        #ui.layout_sidebar(
+            #get_relationships_inputs(),
+            #get_relationships_outputs(),
+        #),
+    #),
     ui.nav(ui.a("About", href="https://github.com/curt2023")),
     ui.nav(ui.a("GitHub", href="https://github.com/curt2023/cintel-07-final")),
     ui.nav(ui.a("App", href="https://curt2023.shinyapps.io/cintel-07-final/")),
     ui.nav(ui.a("Examples", href="https://shinylive.io/py/examples/")),
     ui.nav(ui.a("Widgets", href="https://shiny.rstudio.com/py/docs/ipywidgets.html")),
-    title=ui.h1("Pharma Production Dashboard"),
+    title=ui.h1("Hyde Medical Production Dashboard"),
 )
 
 
@@ -131,9 +128,9 @@ def server(input, output, session):
     
     logger.info("Starting server...")
     get_orders_server_functions(input, output, session)
-    get_records_server_functions(input, output, session)
+    #get_records_server_functions(input, output, session)
     get_penguins_server_functions(input, output, session)
-    get_relationships_server_functions(input, output, session)
+    #get_relationships_server_functions(input, output, session)
 
 
 # app = App(app_ui, server, debug=True)
