@@ -33,7 +33,7 @@ from util_logger import setup_logger
 logger, logname = setup_logger(__name__)
 
 app_ui = ui.page_navbar(
-    shinyswatch.theme.solar(),
+    shinyswatch.theme.superhero(),
     ui.nav(
         "Home",
         ui.layout_sidebar(
@@ -42,14 +42,9 @@ app_ui = ui.page_navbar(
                 ui.tags.hr(),
                 ui.input_text("name_input", "Enter your name", placeholder="Your Name"),
                 ui.input_text(
-                    "car_input",
-                    "Enter your favorite car(s)",
-                    placeholder="Favorite cars"
-                ),
-                ui.input_text(
                     "color_input",
-                    "Enter your favorite color(s)",
-                    placeholder="Favorite color"
+                    "Enter your department",
+                    placeholder="Department"
                 ),
                 ui.tags.hr(),
             ),
@@ -113,7 +108,7 @@ app_ui = ui.page_navbar(
     ui.nav(ui.a("App", href="https://curt2023.shinyapps.io/cintel-07-final/")),
     ui.nav(ui.a("Examples", href="https://shinylive.io/py/examples/")),
     ui.nav(ui.a("Widgets", href="https://shiny.rstudio.com/py/docs/ipywidgets.html")),
-    title=ui.h1("Rogers Dashboard"),
+    title=ui.h1("Pharma Production Dashboard"),
 )
 
 
@@ -123,23 +118,15 @@ def server(input, output, session):
     @render.text
     def welcome_output():
         user = input.name_input()
-        welcome_string = f"{user} START YOUR ENGINES!"
+        welcome_string = f"{user} is viewing operational reports. "
         return welcome_string
 
-    @output
-    @render.text
-    def cars_output():
-        answer = input.car_input()
-        count = len(answer)
-        language_string = f"Your favorite cars are {answer}. That takes {count} characters"
-        return language_string
-    
     @output
     @render.text
     def color_output():
         answer = input.color_input()
         count = len(answer)
-        language_string = f"Your favorite colors are {answer}. That takes {count} characters"
+        language_string = f"Your department is {answer}."
         return language_string
     
     logger.info("Starting server...")
