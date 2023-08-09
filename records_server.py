@@ -48,7 +48,7 @@ def get_records_server_functions(input, output, session):
         errors_filter = (df["Errors"] >= input_min) & (
             df["Errors"] <= input_max
         )
-        df = df[errors_filter]
+        filtered_df = df[errors_filter]
 
         """
         Filter the dataframe to just those greater than or equal to the min
@@ -73,6 +73,7 @@ def get_records_server_functions(input, output, session):
 
         # Set the reactive value
         reactive_df.set(df)
+        reactive_df.set(filtered_df)
 
     @output
     @render.text
@@ -93,7 +94,7 @@ def get_records_server_functions(input, output, session):
     @render_widget
     def records_output_widget1():
         df = reactive_df.get()
-        plotly_express_plot = px.pie(x="Errors", y="Department")
+        plotly_express_plot = px.pie(df, values="Errors", names="Department")
         plotly_express_plot.update_layout(title="Records with Plotly Express")
         return plotly_express_plot
 
