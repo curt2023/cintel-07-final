@@ -93,10 +93,9 @@ def get_records_server_functions(input, output, session):
     @render_widget
     def records_output_widget1():
         df = reactive_df.get()
-        plotly_express_plot = px.scatter(df, x="Errors", y="Material", color="Department")
+        plotly_express_plot = px.funnel(x="Errors", y="Department")
         plotly_express_plot.update_layout(title="Records with Plotly Express")
         return plotly_express_plot
-
 
 
     # return a list of function names for use in reactive outputs

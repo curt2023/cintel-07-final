@@ -18,6 +18,19 @@ def get_records_inputs():
         ui.input_checkbox("DEPARTMENT_TYPE", "Anerobes", value=True),
         ui.input_checkbox("DEPARTMENT_TYPE", "EUCS", value=True),
         ui.input_checkbox("DEPARTMENT_TYPE", "ROW", value=True),
+
+        ui.tags.hr(),
+        ui.tags.section(
+            ui.h3("Records Table"),
+            ui.tags.p("Description of Fields in Table"),
+            ui.tags.ul(
+                ui.tags.li("Department"),
+                ui.tags.li("Errors"),
+                ui.tags.li("Material"),
+                ui.tags.li("Employee"),
+            ),
+        
+        ),
         ui.tags.hr(),
         ui.p("🕒 Please be patient. Outputs may take a few seconds to load."),
         ui.tags.hr(),
