@@ -17,9 +17,9 @@ from shiny import App, ui, render
 #from records_ui_inputs import get_records_inputs
 #from records_ui_outputs import get_records_outputs
 
-from penguins_server import get_penguins_server_functions
-from penguins_ui_inputs import get_penguins_inputs
-from penguins_ui_outputs import get_penguins_outputs
+from quantity_server import get_quantity_server_functions
+from quantity_ui_inputs import get_quantity_inputs
+from quantity_ui_outputs import get_quantity_outputs
 
 #from relationships_server import get_relationships_server_functions
 #from relationships_ui_inputs import get_relationships_inputs
@@ -87,10 +87,10 @@ app_ui = ui.page_navbar(
         #),
     #),
     ui.nav(
-        "Penguins",
+        "Material Breakdown",
         ui.layout_sidebar(
-            get_penguins_inputs(),
-            get_penguins_outputs(),
+            get_quantity_inputs(),
+            get_quantity_outputs(),
         ),
     ),
     #ui.nav(
@@ -129,7 +129,7 @@ def server(input, output, session):
     logger.info("Starting server...")
     get_orders_server_functions(input, output, session)
     #get_records_server_functions(input, output, session)
-    get_penguins_server_functions(input, output, session)
+    get_quantity_server_functions(input, output, session)
     #get_relationships_server_functions(input, output, session)
 
 

@@ -20,10 +20,10 @@ from util_logger import setup_logger
 logger, logname = setup_logger(__name__)
 
 
-def get_penguins_server_functions(input, output, session):
+def get_quantity_server_functions(input, output, session):
     """Define functions to create UI outputs."""
 
-    p = pathlib.Path(__file__).parent.joinpath("data").joinpath("penguins.xlsx")
+    p = pathlib.Path(__file__).parent.joinpath("data").joinpath("quantity.xlsx")
     # logger.info(f"Reading data from {p}")
     original_df = pd.read_excel(p)
     total_count = len(original_df)
@@ -36,12 +36,11 @@ def get_penguins_server_functions(input, output, session):
 
     @reactive.Effect
     @reactive.event(
-        input.PENGUIN_BODY_MASS_RANGE,
-        input.PENGUIN_MAX_BILL,
-        input.PENGUIN_SPECIES_Adelie,
-        input.PENGUIN_SPECIES_Chinstrap,
-        input.PENGUIN_SPECIES_Gentoo,
-        input.PENGUIN_GENDER,
+        input.TIME_RANGE,
+        input.QUANTITY_MAX,
+        input.MEDICINE_A,
+        input.MEDICINE_B,
+        input.MEDICINE_C,
     )
     def _():
         """Reactive effect to update the filtered dataframe when inputs change.
@@ -53,43 +52,37 @@ def get_penguins_server_functions(input, output, session):
         df = original_df.copy()
 
         # Body mass is a range
-        input_range = input.PENGUIN_BODY_MASS_RANGE()
+        input_range = input.TIME_RANGE()
         input_min = input_range[0]
         input_max = input_range[1]
-        body_mass_filter = (df["body_mass_g"] >= input_min) & (
-            df["body_mass_g"] <= input_max
+        body_mass_filter = (df["time_to_complete_hrs"] >= input_min) & (
+            df["time_to_complete_hrs"] <= input_max
         )
         df = df[body_mass_filter]
 
         # Bill length is a max number
-        bill_length_filter = df["bill_length_mm"] <= input.PENGUIN_MAX_BILL()
-        df = df[bill_length_filter]
+        quantity_size_filter = df["order_size_units"] <= input.QUANTITY_MAX()
+        df = df[quantity_size_filter]
 
         # Species is a list of checkboxes (a list of possible values)
-        show_species_list = []
-        if input.PENGUIN_SPECIES_Adelie():
-            show_species_list.append("Adelie")
-        if input.PENGUIN_SPECIES_Chinstrap():
-            show_species_list.append("Chinstrap")
-        if input.PENGUIN_SPECIES_Gentoo():
-            show_species_list.append("Gentoo")
-        show_species_list = show_species_list or ["Adelie", "Chinstrap", "Gentoo"]
-        species_filter = df["species"].isin(show_species_list)
-        df = df[species_filter]
+        show_material_list = []
+        if input.MEDICINE_A():
+            show_material_list.append("MedicineA")
+        if input.MEDICINE_B():
+            show_material_list.append("MedicineB")
+        if input.MEDICINE_C():
+            show_material_list.append("MedicineC")
+        show_material_list = show_material_list or ["MedicineA", "MedicineB", "MedicineC"]
+        material_filter = df["material"].isin(show_material_list)
+        df = df[material_filter]
 
-        # Gender is a radio button
-        input_gender = input.PENGUIN_GENDER()
-        gender_dict = {"a": "All", "f": "Female", "m": "Male"}
-        if input_gender != "a":
-            gender_filter = df["sex"] == gender_dict[input_gender]
-            df = df[gender_filter]
 
         # logger.debug(f"filtered penguins df: {df}")
         reactive_df.set(df)
 
     @output
     @render.text
-    def penguins_record_count_string():
+    def quantity_record_count_string():
         # logger.debug("Triggered: penguins_filter_record_count_string")
         filtered_count = len(reactive_df.get())
         message = f"Showing {filtered_count} of {total_count} records"
@@ -98,23 +91,23 @@ def get_penguins_server_functions(input, output, session):
 
     @output
     @render.table
-    def penguins_filtered_table():
+    def quantity_filtered_table():
         filtered_df = reactive_df.get()
         return filtered_df
 
     @output
     @render_widget
-    def penguins_output_widget1():
+    def quantity_output_widget1():
         df = reactive_df.get()
         plotly_plot = px.scatter(
             df,
-            x="bill_length_mm",
-            y="body_mass_g",
-            color="species",
-            title="Penguins Plot (Plotly Express))",
+            x="order_size_units",
+            y="time_to_complete_hrs",
+            color="material",
+            title="Quantity Plot (Plotly Express))",
             labels={
-                "bill_length_mm": "Bill Length (mm)",
-                "body_mass_g": "Body Mass (g)",
+                "order_size_units": "Order Size",
+                "time_to_complete_hrs": "Time to Complete (hrs)",
             },
             size_max=8,
         )
@@ -123,7 +116,7 @@ def get_penguins_server_functions(input, output, session):
 
     # return a list of function names for use in reactive outputs
     return [
-        penguins_record_count_string,
-        penguins_filtered_table,
-        penguins_output_widget1,
+        quantity_record_count_string,
+        quantity_filtered_table,
+        quantity_output_widget1,
     ]

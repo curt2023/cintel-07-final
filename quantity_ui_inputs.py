@@ -13,18 +13,18 @@ Preface IDs with the dataset name to avoid naming conflicts.
 from shiny import ui
 
 
-def get_penguins_inputs():
+def get_quantity_inputs():
     return ui.panel_sidebar(
-        ui.h2("Penguins Interaction"),
+        ui.h2("Quantity Interaction"),
         ui.tags.hr(),
         ui.input_slider(
-            "PENGUIN_BODY_MASS_RANGE",
-            "Body Mass (g)",
+            "TIME_RANGE",
+            "Time to complete (hrs)",
             min=2700,
             max=6300,
             value=[2700, 6300],
         ),
-        ui.input_numeric("PENGUIN_MAX_BILL", "Max Bill Length (mm):", value=60.0),
+        ui.input_numeric("QUANTITY_MAX", "Order Size", value=20000.0),
         ui.input_checkbox("PENGUIN_SPECIES_Adelie", "Adelie", value=True),
         ui.input_checkbox("PENGUIN_SPECIES_Chinstrap", "Chinstrap", value=True),
         ui.input_checkbox("PENGUIN_SPECIES_Gentoo", "Gentoo", value=True),
