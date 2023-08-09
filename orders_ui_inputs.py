@@ -29,18 +29,3 @@ def get_orders_inputs():
         ui.tags.hr(),
     )
 
-
-#def get_flights_inputs():
-    #return ui.panel_sidebar(
-        #ui.h2("Flights Interaction"),
-        #ui.tags.hr(),
-        #ui.input_date_range(
-            #"FLIGHTS_DATE_RANGE",
-           # "Enter Date Range",
-           # start=date(1949, 1, 1),
-           # end=date(1960, 12, 31),
-        #),
-        #ui.tags.hr(),
-        #ui.p("🕒 Please be patient. Outputs may take a few seconds to load."),
-        #ui.tags.hr(),
-    #)

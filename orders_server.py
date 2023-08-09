@@ -25,8 +25,6 @@ from util_logger import setup_logger
 logger, logname = setup_logger(__name__)
 
 
-####### NEW INFORMATION
-
 def get_orders_server_functions(input, output, session):
     """Define functions to create UI outputs."""
 
@@ -36,7 +34,7 @@ def get_orders_server_functions(input, output, session):
 
     # create new field with year as a string and month together
     original_df["year-mon"] = (
-        original_df["year"].astype(str) + "-" + original_df["month"]
+        original_df["Year"].astype(str) + "-" + original_df["Month"]
     )
     total_count = len(original_df)
 
