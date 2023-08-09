@@ -13,7 +13,7 @@ def get_orders_outputs():
         ui.h2("Main Panel with Reactive Output"),
         ui.tags.hr(),
         ui.tags.section(
-            ui.h3("Filtered orders: Charts"),
+            ui.h3("Filtered Orders: Charts"),
             output_widget("orders_output_widget1"),
             output_widget("orders_output_widget2"),
             ui.tags.hr(),

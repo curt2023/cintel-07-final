@@ -13,9 +13,9 @@ from shiny import App, ui
 import shinyswatch
 from shiny import App, ui, render
 
-from mtcars_server import get_mtcars_server_functions
-from mtcars_ui_inputs import get_mtcars_inputs
-from mtcars_ui_outputs import get_mtcars_outputs
+from records_server import get_records_server_functions
+from records_ui_inputs import get_records_inputs
+from records_ui_outputs import get_records_outputs
 
 from penguins_server import get_penguins_server_functions
 from penguins_ui_inputs import get_penguins_inputs
@@ -88,10 +88,10 @@ app_ui = ui.page_navbar(
         ),
     ),
     ui.nav(
-        "MT_Cars",
+        "Records",
         ui.layout_sidebar(
-            get_mtcars_inputs(),
-            get_mtcars_outputs(),
+            get_records_inputs(),
+            get_records_outputs(),
         ),
     ),
     ui.nav(
@@ -109,8 +109,8 @@ app_ui = ui.page_navbar(
         ),
     ),
     ui.nav(ui.a("About", href="https://github.com/curt2023")),
-    ui.nav(ui.a("GitHub", href="https://github.com/curt2023/cintel-04-reactive")),
-    ui.nav(ui.a("App", href="https://curt2023.shinyapps.io/cintel-04-reactive/")),
+    ui.nav(ui.a("GitHub", href="https://github.com/curt2023/cintel-07-final")),
+    ui.nav(ui.a("App", href="https://curt2023.shinyapps.io/cintel-07-final/")),
     ui.nav(ui.a("Examples", href="https://shinylive.io/py/examples/")),
     ui.nav(ui.a("Widgets", href="https://shiny.rstudio.com/py/docs/ipywidgets.html")),
     title=ui.h1("Rogers Dashboard"),
@@ -143,9 +143,8 @@ def server(input, output, session):
         return language_string
     
     logger.info("Starting server...")
-    #get_flights_server_functions(input, output, session)
     get_orders_server_functions(input, output, session)
-    get_mtcars_server_functions(input, output, session)
+    get_records_server_functions(input, output, session)
     get_penguins_server_functions(input, output, session)
     get_relationships_server_functions(input, output, session)
 
