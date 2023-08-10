@@ -15,25 +15,19 @@ from shiny import ui
 
 def get_quantity_inputs():
     return ui.panel_sidebar(
-        ui.h2("Quantity Interaction"),
+        ui.h2("Management Input"),
         ui.tags.hr(),
         ui.input_slider(
             "TIME_RANGE",
             "Time to complete (hrs)",
-            min=2700,
-            max=6300,
-            value=[2700, 6300],
+            min=1,
+            max=10,
+            value=[2, 6],
         ),
-        ui.input_numeric("QUANTITY_MAX", "Order Size", value=20000.0),
-        ui.input_checkbox("PENGUIN_SPECIES_Adelie", "Adelie", value=True),
-        ui.input_checkbox("PENGUIN_SPECIES_Chinstrap", "Chinstrap", value=True),
-        ui.input_checkbox("PENGUIN_SPECIES_Gentoo", "Gentoo", value=True),
-        ui.input_radio_buttons(
-            "PENGUIN_GENDER",
-            "Select Genders",
-            {"a": "All (includes missing values)", "f": "Female", "m": "Male"},
-            selected="a",
-        ),
+        ui.input_numeric("QUANTITY_MAX", "Order Size", value=43000.0),
+        ui.input_checkbox("MEDICINE_A", "MedicineA", value=True),
+        ui.input_checkbox("MEDICINE_B", "MedicineB", value=True),
+        ui.input_checkbox("MEDICINE_C", "MedicineC", value=True),
         ui.tags.hr(),
         ui.p("🕒 Please be patient. Outputs may take a few seconds to load."),
         ui.tags.hr(),

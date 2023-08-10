@@ -13,17 +13,11 @@ from shiny import App, ui
 import shinyswatch
 from shiny import App, ui, render
 
-#from records_server import get_records_server_functions
-#from records_ui_inputs import get_records_inputs
-#from records_ui_outputs import get_records_outputs
 
 from quantity_server import get_quantity_server_functions
 from quantity_ui_inputs import get_quantity_inputs
 from quantity_ui_outputs import get_quantity_outputs
 
-#from relationships_server import get_relationships_server_functions
-#from relationships_ui_inputs import get_relationships_inputs
-#from relationships_ui_outputs import get_relationships_outputs
 
 from orders_server import get_orders_server_functions
 from orders_ui_inputs import get_orders_inputs
@@ -79,13 +73,7 @@ app_ui = ui.page_navbar(
             get_orders_outputs(),
         ),
     ),
-    #ui.nav(
-        #"Records",
-        #ui.layout_sidebar(
-            #get_records_inputs(),
-            #get_records_outputs(),
-        #),
-    #),
+
     ui.nav(
         "Material Breakdown",
         ui.layout_sidebar(
@@ -93,19 +81,13 @@ app_ui = ui.page_navbar(
             get_quantity_outputs(),
         ),
     ),
-    #ui.nav(
-        #"Relationships",
-        #ui.layout_sidebar(
-            #get_relationships_inputs(),
-            #get_relationships_outputs(),
-        #),
-    #),
+   
     ui.nav(ui.a("About", href="https://github.com/curt2023")),
     ui.nav(ui.a("GitHub", href="https://github.com/curt2023/cintel-07-final")),
     ui.nav(ui.a("App", href="https://curt2023.shinyapps.io/cintel-07-final/")),
     ui.nav(ui.a("Examples", href="https://shinylive.io/py/examples/")),
     ui.nav(ui.a("Widgets", href="https://shiny.rstudio.com/py/docs/ipywidgets.html")),
-    title=ui.h1("Hyde Medical Production Dashboard"),
+    title=ui.h1("Hyde Labs Medical Production Dashboard"),
 )
 
 
@@ -128,9 +110,8 @@ def server(input, output, session):
     
     logger.info("Starting server...")
     get_orders_server_functions(input, output, session)
-    #get_records_server_functions(input, output, session)
     get_quantity_server_functions(input, output, session)
-    #get_relationships_server_functions(input, output, session)
+
 
 
 # app = App(app_ui, server, debug=True)
