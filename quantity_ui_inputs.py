@@ -22,7 +22,7 @@ def get_quantity_inputs():
             "Time to complete (hrs)",
             min=1,
             max=10,
-            value=[2, 6],
+            value=[2, 10],
         ),
         ui.input_numeric("QUANTITY_MAX", "Order Size", value=43000.0),
         ui.input_checkbox("MEDICINE_A", "MedicineA", value=True),

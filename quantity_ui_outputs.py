@@ -10,7 +10,7 @@ from shinywidgets import output_widget
 
 def get_quantity_outputs():
     return ui.panel_main(
-        ui.h2("Main Panel with Reactive Output"),
+        ui.h2("Materials Produced Overview"),
         ui.tags.hr(),
         ui.tags.section(
             ui.h3("Filtered Quantity: Charts"),
