@@ -87,7 +87,7 @@ app_ui = ui.page_navbar(
     ui.nav(ui.a("App", href="https://curt2023.shinyapps.io/cintel-07-final/")),
     ui.nav(ui.a("Examples", href="https://shinylive.io/py/examples/")),
     ui.nav(ui.a("Widgets", href="https://shiny.rstudio.com/py/docs/ipywidgets.html")),
-    title=ui.h1("Hyde Labs Medical Production Dashboard"),
+    title=ui.h1("Hyde Labs Production Dashboard"),
 )
 
 
