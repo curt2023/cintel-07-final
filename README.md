@@ -18,9 +18,9 @@
     
 1. Please feel free to review all pages and tabs in the dashboard.
 1.  Here is a brief overview of the layout and the information that can be found in this dashboard.
-     2. Home Tab: This page contains general information for Hyde Labs and Daily best practice reminders. This has a place for the User to document who is accessing the application, and what department they are associated with. The reminders could be updated as Hyde Labs sees fit.
-     2. Orders Tab: This tab shows the number of orders that are processed for each month for Hyde Labs. These orders are divided by department and can be traced back to 2015.
-     2. Material Breakdown: This tab tracks the size of the orders being processed and the time in hours that it took to complete them. Management can filter this tab by order size, material, or the time it took to complete the order.
+     - Home Tab: This page contains general information for Hyde Labs and Daily best practice reminders. This has a place for the User to document who is accessing the application, and what department they are associated with. The reminders could be updated as Hyde Labs sees fit.
+     - Orders Tab: This tab shows the number of orders that are processed for each month for Hyde Labs. These orders are divided by department and can be traced back to 2015.
+     - Material Breakdown: This tab tracks the size of the orders being processed and the time in hours that it took to complete them. Management can filter this tab by order size, material, or the time it took to complete the order.
 
 ### Real world uses for the deployment of a similar application
 
